@@ -1,10 +1,10 @@
 import React from 'react'
-import { PrincipalUsers } from '@/components/component/principal-users'
+import { HomePage} from '@/components/component/home-page'
 
 function page() {
   return (
     <div>
-    <PrincipalUsers/>
+      <HomePage/>
     </div>
   )
 }
