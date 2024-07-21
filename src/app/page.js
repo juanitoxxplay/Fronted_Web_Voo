@@ -1,14 +1,10 @@
 import React from 'react'
-import Link from 'next/link'
+import { HomePage } from '@/components/component/home-page'
 
-
-
-function Page() {
+function page() {
   return (
-    <Link href='/dashboard'>hola</Link>
-
+    <HomePage/>
   )
-
 }
 
-export default Page
+export default page
