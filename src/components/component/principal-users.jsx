@@ -13,7 +13,7 @@ export function PrincipalUsers() {
         <div className="text-2xl font-bold">Bus App</div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
-            <Avatar className="w-8 h-8">
+           | <Avatar className="w-8 h-8">
               <AvatarImage src="/placeholder-user.jpg" />
               <AvatarFallback>JD</AvatarFallback>
             </Avatar>

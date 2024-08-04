@@ -16,7 +16,7 @@ export function Login() {
     const password = formData.get('password');
 
     try {
-      const response = await fetch('/api/auth', {
+      const response = await fetch('/api/auth', {  // Asegúrate de que la ruta es /api/login
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -32,7 +32,7 @@ export function Login() {
       localStorage.setItem('token', data.token);
 
       // Redirige al usuario a la página de perfil
-      router.push('/profile');
+      router.push('/principaluser');
     } catch (error) {
       // Maneja errores de la solicitud
       console.error('Error en la solicitud de autenticación:', error);
