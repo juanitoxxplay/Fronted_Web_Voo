@@ -16,7 +16,7 @@ export function Login() {
     const password = formData.get('password');
 
     try {
-      const response = await fetch('/api/auth', {  // Asegúrate de que la ruta es /api/login
+      const response = await fetch('/api/auth', {  
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -30,6 +30,7 @@ export function Login() {
 
       // Almacena el token en localStorage
       localStorage.setItem('token', data.token);
+       localStorage.setItem('user', JSON.stringify(data.user));
 
       // Redirige al usuario a la página de perfil
       router.push('/principaluser');
