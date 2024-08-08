@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { PagReportes } from './pag-reportes';
+import { PagMapa } from './pag-mapa';
 
 export function PrincipalUsers() {
   const [user, setUser] = useState(null);
@@ -110,15 +111,7 @@ export function PrincipalUsers() {
           </Card>
         )}
         {selectedTab === 'live-map' && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Live Map</CardTitle>
-              <CardDescription>Track your buses in real-time.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div>This is the Live Map section.</div>
-            </CardContent>
-          </Card>
+          <PagMapa/>
         )}
         {selectedTab === 'users' && (
           <Card>
