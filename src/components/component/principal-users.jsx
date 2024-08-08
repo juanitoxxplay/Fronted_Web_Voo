@@ -6,11 +6,13 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { PagReportes } from './pag-reportes';
 
 export function PrincipalUsers() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedTab, setSelectedTab] = useState('reports');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -82,7 +84,7 @@ export function PrincipalUsers() {
       </header>
       <nav className="bg-background border-b">
         <div className="container mx-auto px-4 py-3 flex items-center gap-4">
-          <Tabs defaultValue="reports">
+          <Tabs defaultValue="reports" onValueChange={setSelectedTab}>
             <TabsList>
               <TabsTrigger value="reports">Reports</TabsTrigger>
               <TabsTrigger value="support">Support</TabsTrigger>
@@ -93,57 +95,44 @@ export function PrincipalUsers() {
         </div>
       </nav>
       <main className="flex-1 container mx-auto px-4 py-8">
-        <Tabs>
-          <TabsContent value="reports">
-            <Card>
-              <CardHeader>
-                <CardTitle>Reports</CardTitle>
-                <CardDescription>View and manage your bus reports.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div>This is the Reports section.</div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="support">
-            <Card>
-              <CardHeader>
-                <CardTitle>Support</CardTitle>
-                <CardDescription>Get help with your bus app issues.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div>This is the Support section.</div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="live-map">
-            <Card>
-              <CardHeader>
-                <CardTitle>Live Map</CardTitle>
-                <CardDescription>Track your buses in real-time.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div>This is the Live Map section.</div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="users">
-            <Card>
-              <CardHeader>
-                <CardTitle>Users</CardTitle>
-                <CardDescription>Manage your bus app users.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div>This is the Users section.</div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+        {selectedTab === 'reports' && (
+          <PagReportes/>
+        )}
+        {selectedTab === 'support' && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Support</CardTitle>
+              <CardDescription>Get help with your bus app issues.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div>This is the Support section.</div>
+            </CardContent>
+          </Card>
+        )}
+        {selectedTab === 'live-map' && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Live Map</CardTitle>
+              <CardDescription>Track your buses in real-time.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div>This is the Live Map section.</div>
+            </CardContent>
+          </Card>
+        )}
+        {selectedTab === 'users' && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Users</CardTitle>
+              <CardDescription>Manage your bus app users.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div>This is the Users section.</div>
+            </CardContent>
+          </Card>
+        )}
       </main>
     </div>
-  
-
-
   );
 }
 
