@@ -8,6 +8,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { PagReportes } from './pag-reportes';
 import { PagMapa } from './pag-mapa';
+import { PagSoporte } from './pag-soporte';
+import { Tablas } from './tablas';
 
 export function PrincipalUsers() {
   const [user, setUser] = useState(null);
@@ -70,6 +72,12 @@ export function PrincipalUsers() {
                     <span>Security</span>
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="#" className="flex items-center gap-2" prefetch={false}>
+                    <div className="w-4 h-4" />
+                    <span>Cerrar Sesion</span>
+                  </Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuCheckboxItem>
                   <div className="flex items-center gap-2">
@@ -95,35 +103,19 @@ export function PrincipalUsers() {
           </Tabs>
         </div>
       </nav>
-      <main className="flex-1 container mx-auto px-4 py-8">
+      <main className="flex-1 container">
         {selectedTab === 'reports' && (
           <PagReportes/>
         )}
         {selectedTab === 'support' && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Support</CardTitle>
-              <CardDescription>Get help with your bus app issues.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div>This is the Support section.</div>
-            </CardContent>
-          </Card>
+        <PagSoporte/>
         )}
         {selectedTab === 'live-map' && (
           <PagMapa/>
         )}
         {selectedTab === 'users' && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Users</CardTitle>
-              <CardDescription>Manage your bus app users.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div>This is the Users section.</div>
-            </CardContent>
-          </Card>
-        )}
+          <Tablas/>
+                  )}
       </main>
     </div>
   );
